@@ -94,8 +94,67 @@ const getProfile = async (req, res) => {
         });
     }
 };
+const updateProfile = async (req, res) => {
+    try {
+        const userId = req.user.userId;
+
+        const {
+            date_of_birth,
+            gender,
+            phone,
+            address,
+            city,
+            state,
+            postal_code
+        } = req.body;
+
+        const result = await pool.query(
+            `UPDATE student_profiles
+             SET
+                date_of_birth = $1,
+                gender = $2,
+                phone = $3,
+                address = $4,
+                city = $5,
+                state = $6,
+                postal_code = $7,
+                updated_at = CURRENT_TIMESTAMP
+             WHERE user_id = $8
+             RETURNING *`,
+            [
+                date_of_birth,
+                gender,
+                phone,
+                address,
+                city,
+                state,
+                postal_code,
+                userId
+            ]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({
+                message: "Student profile not found"
+            });
+        }
+
+        res.json({
+            message: "Student profile updated successfully",
+            profile: result.rows[0]
+        });
+
+    } catch (error) {
+        console.error("Update profile error:", error);
+
+        res.status(500).json({
+            message: "Server error"
+        });
+    }
+};
 
 module.exports = {
     createProfile,
-    getProfile
+    getProfile,
+    updateProfile
 };

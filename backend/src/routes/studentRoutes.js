@@ -2,7 +2,8 @@ const express = require("express");
 
 const {
     createProfile,
-    getProfile
+    getProfile,
+    updateProfile
 } = require("../controllers/studentController");
 
 const authenticateToken = require("../middleware/authMiddleware");
@@ -19,6 +20,12 @@ router.get(
     "/profile",
     authenticateToken,
     getProfile
+);
+
+router.put(
+    "/profile",
+    authenticateToken,
+    updateProfile
 );
 
 module.exports = router;
