@@ -7,11 +7,11 @@
     "test": "tests"
   },
   "scripts": {
-  "start": "node src/app.js",
-  "dev": "nodemon src/app.js",
-  "test": "jest",
-  "migrate": "node src/runMigration.js"
-},
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest",
+    "migrate": "node src/runMigration.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
