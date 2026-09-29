@@ -9,6 +9,7 @@ const authRoutes = require("./routes/authRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 const academicRoutes = require("./routes/academicRoutes");
 const courseRoutes = require("./routes/courseRoutes");
+const admissionRoutes = require("./routes/admissionRoutes");
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/academic-records", academicRoutes);
 app.use("/api/courses", courseRoutes);
+app.use("/api/admission-applications", admissionRoutes);
 
 app.get("/", (req, res) => {
     res.json({
