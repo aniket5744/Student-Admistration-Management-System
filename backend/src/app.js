@@ -11,6 +11,7 @@ const academicRoutes = require("./routes/academicRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const admissionRoutes = require("./routes/admissionRoutes");
 const documentRoutes = require("./routes/documentRoutes");
+const statusHistoryRoutes = require("./routes/statusHistoryRoutes");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use("/api/academic-records", academicRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/admission-applications", admissionRoutes);
 app.use("/api/documents", documentRoutes);
+app.use("/api/application-status-history", statusHistoryRoutes);
 
 app.get("/", (req, res) => {
     res.json({
